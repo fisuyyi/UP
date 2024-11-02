@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Detail</title>
+</head>
+<body>
+<h1>Payment Detail</h1>
+<p>ID: <span th:text="${payment.id}"></span></p>
+<p>Rental ID: <span th:text="${payment.rental.id}"></span></p>
+<p>Amount: <span th:text="${payment.amount}"></span></p>
+<p>Payment Date: <span th:text="${payment.paymentDate}"></span></p>
+<a th:href="@{/payments/{id}/edit(id=${payment.id})}">Edit</a>
+<form th:action="@{/payments/{id}/delete(id=${payment.id})}" method="post" style="display:inline;">
+    <button type="submit">Delete</button>
+</form>
+<a href="/payments">Back to Payment List</a>
+</body>
+</html>

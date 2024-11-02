@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add/Edit Supplier</title>
+</head>
+<body>
+<h1 th:text="${supplier.id != null} ? 'Edit Supplier' : 'Add New Supplier'"></h1>
+<form th:action="@{/suppliers}" th:object="${supplier}" method="post">
+  <input type="hidden" th:if="${supplier.id != null}" th:field="*{id}" />
+  <label for="companyName">Company Name:</label>
+  <input type="text" id="companyName" th:field="*{companyName}" required /><br/>
+  <label for="contactName">Contact Name:</label>
+  <input type="text" id="contactName" th:field="*{contactName}" required /><br/>
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="text" id="phoneNumber" th:field="*{phoneNumber}" required /><br/>
+  <button type="submit">Submit</button>
+</form>
+<a href="/suppliers">Back to Supplier List</a>
+</body>
+</html>

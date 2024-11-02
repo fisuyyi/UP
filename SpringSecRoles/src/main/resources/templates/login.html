@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>Авторизация</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+    input[type="text"], input[type="password"] {
+      width: calc(100% - 1rem);
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      outline: none;
+      font-size: 1rem;
+    }
+    input[type="submit"] {
+      width: 100%;
+      background-color: #007bff;
+      color: #fff;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .error-message {
+      color: #d9534f;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .register-link {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .register-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Вход в систему</h1>
+  <div th:if="${param.error}" class="error-message">
+    <i class="fas fa-exclamation-triangle"></i> Неверное имя пользователя или пароль.
+  </div>
+  <form th:action="@{/login}" method="post">
+    <label>Логин:
+      <input type="text" name="username" placeholder="Введите логин"/>
+    </label>
+    <label>Пароль:
+      <input type="password" name="password" placeholder="Введите пароль"/>
+    </label>
+    <input type="submit" value="Авторизация"/>
+  </form>
+  <a href="/registration" class="register-link">Зарегистрироваться</a>
+</div>
+</body>
+</html>

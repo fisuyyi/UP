@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category Detail</title>
+</head>
+<body>
+<h1>Category Detail</h1>
+<p>ID: <span th:text="${category.id}"></span></p>
+<p>Category Name: <span th:text="${category.categoryName}"></span></p>
+<p>Description: <span th:text="${category.description}"></span></p>
+<a th:href="@{/categories/{id}/edit(id=${category.id})}">Edit</a>
+<form th:action="@{/categories/{id}/delete(id=${category.id})}" method="post" style="display:inline;">
+  <button type="submit">Delete</button>
+</form>
+<a href="/categories">Back to Category List</a>
+</body>
+</html>

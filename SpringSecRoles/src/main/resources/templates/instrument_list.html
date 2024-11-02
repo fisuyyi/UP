@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instruments</title>
+</head>
+<body>
+<div th:insert="blocks/header"></div>
+<h1>Instruments</h1>
+<a href="/instruments/add">Add New Instrument</a>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Price Per Day</th>
+    <th>Available</th>
+    <th>Actions</th>
+  </tr>
+  <tr th:each="instrument : ${instruments}">
+    <td th:text="${instrument.id}"></td>
+    <td th:text="${instrument.name}"></td>
+    <td th:text="${instrument.type}"></td>
+    <td th:text="${instrument.pricePerDay}"></td>
+    <td th:text="${instrument.available} ? 'Yes' : 'No'"></td>
+    <td>
+      <a th:href="@{/instruments/{id}(id=${instrument.id})}">View</a> |
+      <a th:href="@{/instruments/{id}/edit(id=${instrument.id})}">Edit</a> |
+      <form th:action="@{/instruments/{id}/delete(id=${instrument.id})}" method="post" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

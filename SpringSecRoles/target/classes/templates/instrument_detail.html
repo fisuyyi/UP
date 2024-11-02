@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instrument Detail</title>
+</head>
+<body>
+<h1>Instrument Detail</h1>
+<p>ID: <span th:text="${instrument.id}"></span></p>
+<p>Name: <span th:text="${instrument.name}"></span></p>
+<p>Type: <span th:text="${instrument.type}"></span></p>
+<p>Price Per Day: <span th:text="${instrument.pricePerDay}"></span></p>
+<p>Available: <span th:text="${instrument.available} ? 'Yes' : 'No'"></span></p>
+<a th:href="@{/instruments/{id}/edit(id=${instrument.id})}">Edit</a>
+<form th:action="@{/instruments/{id}/delete(id=${instrument.id})}" method="post" style="display:inline;">
+  <button type="submit">Delete</button>
+</form>
+<a href="/instruments">Back to Instrument List</a>
+</body>
+</html>

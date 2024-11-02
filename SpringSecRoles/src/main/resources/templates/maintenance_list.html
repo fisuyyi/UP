@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Records</title>
+</head>
+<body>
+<div th:insert="blocks/header"></div>
+<h1>Maintenance Records</h1>
+<a href="/maintenance/add">Add New Maintenance Record</a>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Instrument ID</th>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+  <tr th:each="record : ${maintenanceRecords}">
+    <td th:text="${record.id}"></td>
+    <td th:text="${record.instrument.name}"></td>
+    <td th:text="${record.maintenanceDate}"></td>
+    <td th:text="${record.description}"></td>
+    <td>
+      <a th:href="@{/maintenance/{id}(id=${record.id})}">View</a> |
+      <a th:href="@{/maintenance/{id}/edit(id=${record.id})}">Edit</a> |
+      <form th:action="@{/maintenance/{id}/delete(id=${record.id})}" method="post" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

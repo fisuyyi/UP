@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add/Edit Maintenance</title>
+</head>
+<body>
+<h1 th:text="${maintenance.id != null} ? 'Edit Maintenance' : 'Add New Maintenance'"></h1>
+<form th:action="@{/maintenance}" th:object="${maintenance}" method="post">
+  <input type="hidden" th:if="${maintenance.id != null}" th:field="*{id}" />
+  <label for="instrument">Instrument:</label>
+  <select id="instrument" th:field="*{instrument}" required>
+    <option th:each="instrument : ${instruments}" th:value="${instrument.id}" th:text="${instrument.name}"></option>
+  </select><br/>
+  <label for="maintenanceDate">Maintenance Date:</label>
+  <input type="date" id="maintenanceDate" th:field="*{maintenanceDate}" required /><br/>
+  <label for="description">Description:</label>
+  <textarea id="description" th:field="*{description}" required></textarea><br/>
+  <button type="submit">Submit</button>
+</form>
+<a href="/maintenance">Back to Maintenance List</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add/Edit Category</title>
+</head>
+<body>
+<h1 th:text="${category.id != null} ? 'Edit Category' : 'Add New Category'"></h1>
+<form th:action="@{/categories}" th:object="${category}" method="post">
+  <input type="hidden" th:if="${category.id != null}" th:field="*{id}" />
+  <label for="categoryName">Category Name:</label>
+  <input type="text" id="categoryName" th:field="*{categoryName}" required /><br/>
+  <label for="description">Description:</label>
+  <textarea id="description" th:field="*{description}" required></textarea><br/>
+  <button type="submit">Submit</button>
+</form>
+<a href="/categories">Back to Category List</a>
+</body>
+</html>

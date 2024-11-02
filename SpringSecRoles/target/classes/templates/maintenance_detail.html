@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Detail</title>
+</head>
+<body>
+<h1>Maintenance Detail</h1>
+<p>ID: <span th:text="${maintenance.id}"></span></p>
+<p>Instrument ID: <span th:text="${maintenance.instrument.name}"></span></p>
+<p>Date: <span th:text="${maintenance.maintenanceDate}"></span></p>
+<p>Description: <span th:text="${maintenance.description}"></span></p>
+<a th:href="@{/maintenance/{id}/edit(id=${maintenance.id})}">Edit</a>
+<form th:action="@{/maintenance/{id}/delete(id=${maintenance.id})}" method="post" style="display:inline;">
+  <button type="submit">Delete</button>
+</form>
+<a href="/maintenance">Back to Maintenance List</a>
+</body>
+</html>
